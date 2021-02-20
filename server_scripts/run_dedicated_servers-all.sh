@@ -28,6 +28,11 @@ check_for_file "$dontstarve_dir/$cluster_name/Caves/server.ini"
 
 ./steamcmd.sh +force_install_dir "$install_dir" +login anonymous +app_update 343050 validate +quit
 
+# setup mod
+cd $HOME
+wget "https://raw.githubusercontent.com/kmtu/dstserverutils/main/server_scripts/dedicated_server_mods_setup.lua"
+cp -f dedicated_server_mods_setup.lua ${install_dir}/mods/
+
 check_for_file "$install_dir/bin"
 
 cd "$install_dir/bin" || fail
