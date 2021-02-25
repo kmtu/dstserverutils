@@ -38,9 +38,9 @@ do
 done
 
 # download dst server running script
-cd /home/${dstuser}
-wget https://raw.githubusercontent.com/kmtu/dstserverutils/main/server_scripts/run_dedicated_servers-${shard}.sh
-chmod u+x run_dedicated_servers-${shard}.sh
+wget -O /home/${dstuser}/run_dedicated_servers-${shard}.sh \
+  "https://raw.githubusercontent.com/kmtu/dstserverutils/main/server_scripts/run_dedicated_servers-${shard}.sh"
+chmod u+x /home/${dstuser}/run_dedicated_servers-${shard}.sh
 
 chown -R ${dstuser}:${dstuser} /home/${dstuser}
 sudo -H -u ${dstuser} -s bash -c "tmux new -d -s dst-${shard} /home/${dstuser}/run_dedicated_servers-${shard}.sh"
