@@ -1,9 +1,18 @@
 world=$1  # Seal
-shard=$2  # Master, Cave
-world_dir=.klei/DoNotStarveTogether/
-output_file=${world}.${shard}.$(date +"%Y%m%d%H%M").tgz
-backup_dir=/home/steam/dst_backup
+shard=$2  # master, cave
+dst_user=steam
+world_dir=/home/${dst_user}/.klei/DoNotStarveTogether/
+output_file=${world}.${shard}.$(date -u +"%Y%m%d%H%M").tgz
+backup_dir=/home/${dst_user}/dst_backup
 
-tar -C ${world_dir} -zcf ${backup_dir}/${output_file} ${world}
+mkdir -p ${backup_dir}
+if [[ "$shard" == "master" ]]; then
+  tar --exclude="Caves" -C ${world_dir} -zcf ${backup_dir}/${output_file} ${world}
+elif [[ "$shard" == "cave" ]]; then
+  tar --exclude="Master" -C ${world_dir} -zcf ${backup_dir}/${output_file} ${world}
+else
+  echo "unknown shard: '${shard}'"
+  exit 1
+fi
 echo ${backup_dir}/${output_file}
 
