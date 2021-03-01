@@ -13,7 +13,7 @@ if [[ "$mode" == "separate" ]]; then
     echo "${shard} stopped"
   done
 elif [[ "$mode" == "allinone" ]]; then
-  host=tuserver
+  host=dsttuserver
   ssh steam@${host} 'tmux has-session -t dst-all'
   while [[ "$?" == 0 ]]; do
       echo "waiting for ${host} to stop..."

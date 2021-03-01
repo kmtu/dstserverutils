@@ -7,7 +7,7 @@ do
   if [[ "$mode" == "separate" ]]; then
     host=dst${shard}
   elif [[ "$mode" == "allinone" ]]; then
-    host=tuserver
+    host=dsttuserver
   fi
   archive=$(ssh steam@${host} "bash -s ${world} ${shard}" < /home/kmtu/dst/mkarchive.sh)
   #rsync -avh --remove-source-files steam@${host}:${archive} ${bkdir}/

@@ -10,7 +10,7 @@ if [[ "$mode" == "separate" ]]; then
       ssh steam@${host} 'tmux new -d -s dst ./run_dedicated_servers.sh'
   done
 elif [[ "$mode" == "allinone" ]]; then
-  host=tuserver
+  host=dsttuserver
   echo "starting ${host}"
   ssh steam@${host} 'tmux has-session -t dst-all' && \
     echo "dst already running on ${host}" || \

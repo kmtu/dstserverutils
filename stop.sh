@@ -10,7 +10,7 @@ if [[ "$mode" == "separate" ]]; then
   done
 elif [[ "$mode" == "allinone" ]]; then
   echo "stopping server"
-  host=tuserver
+  host=dsttuserver
   ssh steam@${host} 'tmux send-keys -t dst-all.0 "c_shutdown()" ENTER'
 #  ssh steam@${host} 'tmux send-keys -t dst-all.0 "c_shutdown()" ENTER'
 fi
