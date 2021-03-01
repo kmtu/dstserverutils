@@ -12,5 +12,5 @@ elif [[ "$mode" == "allinone" ]]; then
   echo "stopping server"
   host=tuserver
   ssh steam@${host} 'tmux send-keys -t dst-all.0 "c_shutdown()" ENTER'
-  ssh steam@${host} 'tmux send-keys -t dst-all.0 "c_shutdown()" ENTER'
+#  ssh steam@${host} 'tmux send-keys -t dst-all.0 "c_shutdown()" ENTER'
 fi

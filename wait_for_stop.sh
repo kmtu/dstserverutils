@@ -18,6 +18,8 @@ elif [[ "$mode" == "allinone" ]]; then
   while [[ "$?" == 0 ]]; do
       echo "waiting for ${host} to stop..."
       sleep 5
+      ssh steam@${host} 'tmux send-keys -t dst-all.0 "c_shutdown()" ENTER'
+      sleep 5
       ssh steam@${host} 'tmux has-session -t dst-all'
   done
   echo "${host} stopped"
