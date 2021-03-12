@@ -54,7 +54,7 @@ if [[ "$shard" == "master" ]]; then
   echo "setting up ip in master..." >> $logfile
   # get ip
   public_ip=$(ip addr | grep inet | grep eth0 | awk -F ' ' '{print $2}' | awk -F '/' '{print $1}')
-  sed -irne "s/^master_ip = .*/master_ip = ${public_ip}/" ${world_dir}/${world}/cluster.ini
+  sed -i -rne "s/^master_ip = .*/master_ip = ${public_ip}/" ${world_dir}/${world}/cluster.ini
 fi
 
 echo "executing dst server running script..." >> $logfile
