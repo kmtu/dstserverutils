@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-keyuser="<pub_keys_source_user>"
+ssh_dir="<pub_keys_source_dir>"  # /home/user/.ssh or /root/.ssh
 dstuser="<dst_install_user>"
 shard="all"  # all, master, cave
 world="<world_folder_name>"
@@ -22,7 +22,7 @@ adduser --disabled-password --gecos "" ${dstuser}
 # prepare pub key for ssh access 
 echo "preparing pub key..." >> $logfile
 mkdir -m 700 -p /home/${dstuser}/.ssh
-cat /home/${keyuser}/.ssh/authorized_keys >> /home/${dstuser}/.ssh/authorized_keys
+cat ${ssh_dir}/authorized_keys >> /home/${dstuser}/.ssh/authorized_keys
 
 # install steamcmd
 echo "installing steamcmd..." >> $logfile
