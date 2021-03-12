@@ -53,7 +53,7 @@ chmod u+x /home/${dstuser}/run_dedicated_servers-${shard}.sh
 if [[ "$shard" == "master" ]]; then
   # get ip
   public_ip = $(ip addr | grep inet | grep eth0 | awk -F ' ' '{print $2}' | awk -F '/' '{print $1}')
-  sed -irne "s/^master_ip = .*/master_ip = ${public_ip}/" .klei/DoNotStarveTogether/Seal/cluster.ini
+  sed -irne "s/^master_ip = .*/master_ip = ${public_ip}/" ${world_dir}/${world}/cluster.ini
 fi
 
 echo "executing dst server running script..." >> $logfile
